@@ -30,7 +30,23 @@ namespace SimpleFileShredder
 
         private bool Collect(string adr)
         {
-            return true;
+            var dirs = Directory.GetDirectories(adr);
+            var files = Directory.GetFiles(adr);
+
+            foreach (var dir in dirs)
+            {
+                Collect(dir);
+            }
+
+            foreach (var file in files)
+            {
+                AddFile(file);
+            }
+
+            if ((FilesList.Count == 0) && (DirList.Count == 0))
+                return false;
+            else
+                return true;
         }
 
         private void AddFile(string adr)
