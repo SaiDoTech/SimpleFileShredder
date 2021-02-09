@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimpleFileShredder"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="FileShredder" Height="450" Width="800">
+    <Grid x:Name="Layout" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.3*"/>
+        </Grid.ColumnDefinitions>
 
+        <TextBox Grid.Column="0" Grid.Row="0" Margin="10" VerticalAlignment="Center">
+            There should be address.
+        </TextBox>
+        <TreeView Grid.Column="0" Grid.Row="1" Margin="10" x:Name="AdrTree">
+            <TreeViewItem Header="Some folder">
+                <TreeViewItem Header="Folder1"/>
+                <TreeViewItem Header="Folder2"/>
+            </TreeViewItem>
+        </TreeView>
+        
+        <Button Grid.Column="1" Grid.Row="0" Margin="10">
+            Find
+        </Button>
+        
+        <WrapPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" Margin="10">
+            <Label>
+                Algoritm:
+            </Label>
+            <ComboBox>
+                <ComboBoxItem>Alg 1</ComboBoxItem>
+                <ComboBoxItem>Alg 1</ComboBoxItem>
+            </ComboBox>
+            <Label>
+                Delete:
+            </Label>
+            <RadioButton GroupName="WhenDelete" Content="Now" IsChecked="True" />
+            <RadioButton GroupName="WhenDelete" Content="After restart" IsChecked="False" />
+            <Button>Shredd</Button>
+        </WrapPanel>
     </Grid>
 </Window>
