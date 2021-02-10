@@ -10,6 +10,12 @@ namespace SimpleFileShredder
         private List<string> FilesList;
         private List<string> DirList;
 
+        public FileController()
+        {
+            FilesList = null;
+            DirList = null;
+        }
+
         public bool Find(string adr)
         {
             if (Directory.Exists(adr))

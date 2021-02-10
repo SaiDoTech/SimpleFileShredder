@@ -31,6 +31,7 @@
         </Button>
         
         <WrapPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" Margin="10">
+            <Button>Clear</Button>
             <Label>
                 Algoritm:
             </Label>
@@ -42,7 +43,14 @@
                 Delete:
             </Label>
             <RadioButton GroupName="WhenDelete" Content="Now" IsChecked="True" />
-            <RadioButton GroupName="WhenDelete" Content="After restart" IsChecked="False" />
+            <RadioButton GroupName="WhenDelete" Content="After restart PC" IsChecked="False" />
+            <Label>
+                Delete folders:
+            </Label>
+            <WrapPanel Orientation="Horizontal">
+                <RadioButton GroupName="FolderDelete" Content="Yes" IsChecked="True" />
+                <RadioButton GroupName="FolderDelete" Content="No" IsChecked="False" Margin="5,0"/>
+            </WrapPanel>
             <Button>Shredd</Button>
         </WrapPanel>
     </Grid>
