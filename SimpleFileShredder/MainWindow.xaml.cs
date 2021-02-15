@@ -32,10 +32,10 @@ namespace SimpleFileShredder
                 MessageBox.Show("Can't be found");
             }
 
-            foreach (var file in fileCtr.FilesList)
+            foreach (var file in fileCtr.GetFiles())
             {
                 PathList.Items.Add(file);
-            }    
+            }
         }
     }
 }

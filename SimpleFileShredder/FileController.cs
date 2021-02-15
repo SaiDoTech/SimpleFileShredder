@@ -7,11 +7,22 @@ namespace SimpleFileShredder
 {
     public class FileController
     {
-        public List<string> FilesList = new List<string>();
+        private List<string> FilesList = new List<string>();
         private List<string> DirList = new List<string>();
 
         public FileController()
         {
+        }
+
+        public List<String> GetFiles()
+        {
+            return FilesList;
+        }
+
+        public void ClearLists()
+        {
+            FilesList.Clear();
+            DirList.Clear();
         }
 
         public bool Find(string adr)
