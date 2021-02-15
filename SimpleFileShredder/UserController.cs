@@ -7,11 +7,33 @@ namespace SimpleFileShredder
 {
     public class UserController
     {
-        FileController fileController;
+        private List<string> FilesList = new List<string>();
+        private List<string> DirList = new List<string>();
 
-        public UserController(FileController fileController)
+        public UserController()
+        {}
+
+        public void AddFile(string adr)
         {
-            this.fileController = fileController;
+            if (File.Exists(adr))
+                FilesList.Add(adr);
+        }
+
+        public void AddDir(string adr)
+        {
+            if (Directory.Exists(adr))
+                DirList.Add(adr);
+        }
+
+        public List<String> GetFiles()
+        {
+            return FilesList;
+        }
+
+        public void ClearLists()
+        {
+            FilesList.Clear();
+            DirList.Clear();
         }
     }
 }

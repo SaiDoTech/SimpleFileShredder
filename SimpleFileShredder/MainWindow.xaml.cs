@@ -25,14 +25,15 @@ namespace SimpleFileShredder
         {
             InitializeComponent();
 
-            var fileCtr = new FileController();
+            var user = new UserController();
+            var fileCtr = new FileController(user);
 
             if (!fileCtr.Find("C:\\Users\\SAI-HOME\\Desktop\\Books"))
             {
                 MessageBox.Show("Can't be found");
             }
 
-            foreach (var file in fileCtr.GetFiles())
+            foreach (var file in user.GetFiles())
             {
                 PathList.Items.Add(file);
             }

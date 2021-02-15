@@ -7,22 +7,11 @@ namespace SimpleFileShredder
 {
     public class FileController
     {
-        private List<string> FilesList = new List<string>();
-        private List<string> DirList = new List<string>();
+        private UserController user;
 
-        public FileController()
+        public FileController(UserController user)
         {
-        }
-
-        public List<String> GetFiles()
-        {
-            return FilesList;
-        }
-
-        public void ClearLists()
-        {
-            FilesList.Clear();
-            DirList.Clear();
+            this.user = user;
         }
 
         public bool Find(string adr)
@@ -33,7 +22,7 @@ namespace SimpleFileShredder
             }
             else if (File.Exists(adr))
             {
-                AddFile(adr);
+                user.AddFile(adr);
                 return true;
             }
             else
@@ -49,12 +38,12 @@ namespace SimpleFileShredder
 
             foreach (var file in FileList)
             {
-                AddFile(file);
+                user.AddFile(file);
             }
 
             foreach (var dir in DirList)
             {
-                AddDir(dir);
+                user.AddDir(dir);
                 Collect(dir);
             }
 
@@ -62,18 +51,6 @@ namespace SimpleFileShredder
                 return true;
             else
                 return false;
-        }
-
-        private void AddFile(string adr)
-        {
-            if (File.Exists(adr))
-                FilesList.Add(adr);
-        }
-
-        private void AddDir(string adr)
-        {
-            if (Directory.Exists(adr))
-                DirList.Add(adr);
         }
     }
 }
