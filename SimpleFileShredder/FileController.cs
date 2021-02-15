@@ -20,39 +20,39 @@ namespace SimpleFileShredder
         {
             if (Directory.Exists(adr))
             {
-                if (Collect(adr))
-                    return true;
-                else
-                    return false;
+                return Collect(adr);
             }
             else if (File.Exists(adr))
             {
                 AddFile(adr);
                 return true;
             }
-
-            return false;
+            else
+            {
+                return false;
+            }
         }
 
         private bool Collect(string adr)
         {
-            var dirs = Directory.GetDirectories(adr);
-            var files = Directory.GetFiles(adr);
+            var FileList = Directory.GetFiles(adr);
+            var DirList = Directory.GetDirectories(adr);
 
-            foreach (var dir in dirs)
-            {
-                Collect(dir);
-            }
-
-            foreach (var file in files)
+            foreach (var file in FileList)
             {
                 AddFile(file);
             }
 
-            if ((FilesList.Count == 0) && (DirList.Count == 0))
-                return false;
-            else
+            foreach (var dir in DirList)
+            {
+                AddDir(dir);
+                Collect(dir);
+            }
+
+            if (FileList.Length != 0 && DirList.Length != 0)
                 return true;
+            else
+                return false;
         }
 
         private void AddFile(string adr)
