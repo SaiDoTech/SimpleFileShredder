@@ -24,7 +24,7 @@
             Find
         </Button>
 
-        <ListView Grid.Column="0" Grid.Row="1" Margin="10">
+        <ListView Grid.Column="0" Grid.Row="1" Margin="10" x:Name="PathList">
             <ListView.View>
                 <GridView>
                     <GridViewColumn>Path</GridViewColumn>

@@ -7,13 +7,11 @@ namespace SimpleFileShredder
 {
     public class FileController
     {
-        private List<string> FilesList;
-        private List<string> DirList;
+        public List<string> FilesList = new List<string>();
+        private List<string> DirList = new List<string>();
 
         public FileController()
         {
-            FilesList = null;
-            DirList = null;
         }
 
         public bool Find(string adr)
@@ -58,13 +56,13 @@ namespace SimpleFileShredder
         private void AddFile(string adr)
         {
             if (File.Exists(adr))
-                AddFile(adr);
+                FilesList.Add(adr);
         }
 
         private void AddDir(string adr)
         {
             if (Directory.Exists(adr))
-                AddDir(adr);
+                DirList.Add(adr);
         }
     }
 }
